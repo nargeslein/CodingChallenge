@@ -68,7 +68,7 @@ namespace CodingChallenge
 
         public override string ToString()
         {
-            return $"Asset '{Symbol}' is {GetType().Name} - value {Value():0,0.00} {Currency}";
+            return $"Asset '{Symbol}' is {GetType().Name} - value {Currency} {Value():0,0.00}";
         }
         /// <summary>
         /// Overriding Equals method so that assets from the same type and same currency and symbol are considered equal

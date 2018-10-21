@@ -83,7 +83,7 @@ namespace CodingChallenge
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine($"Portfolio '{Name}' value {Value():0,0.00} EUR with these {NoAssets} assets:");
+            sb.AppendLine($"Portfolio '{Name}' value EUR {Value():0,0.00} with {NoAssets} assets:");
             foreach (var asset in Portfolio)
                 sb.AppendLine("\t" + asset);
             return sb.ToString();
