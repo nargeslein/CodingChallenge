@@ -30,9 +30,15 @@ namespace CodingChallenge
         {
             return Shares * Price;
         }
-
-        protected override Asset CustomConsolidate(List<Asset> assets)
+        /// <summary>
+        /// consolidates a list of Stocks that are equal, having the same symbol and currency and same asset type,
+        /// note that domestic stock and stock in EUR cannot be consolidated even if the symbols are the same as the type is different
+        /// </summary>
+        /// <param name="assets"></param>
+        /// <returns></returns>
+        public override Asset Consolidate(List<Asset> assets)
         {
+            ConsolidateCheck(assets);
             decimal newShares = 0;
             decimal newPrice = 0;
 

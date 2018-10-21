@@ -37,12 +37,13 @@ namespace CodingChallenge
         }
 
         /// <summary>
-        /// consolidates a list of asset from the same asset class, similarity is based on the asset symbol
+        /// consolidates a list of FXCurrency assets that are equal, having the same currency and symbol
         /// </summary>
         /// <param name="assets">list of assets</param>
         /// <returns>consolidated asset</returns>
-        protected override Asset CustomConsolidate(List<Asset> assets)
+        public override Asset Consolidate(List<Asset> assets)
         {
+            ConsolidateCheck(assets);
             decimal amount = 0;
             foreach (var fx in assets)
                 amount += ((FXCurrencyAsset)fx).Amount;

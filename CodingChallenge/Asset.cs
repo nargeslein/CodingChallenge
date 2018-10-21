@@ -33,14 +33,18 @@ namespace CodingChallenge
             Currency = currency;
         }
 
-        protected abstract Asset CustomConsolidate(List<Asset> assets);
-        
         /// <summary>
-        /// method to consolidate equal assets
+        /// every derived class must provide its own implementation how assets are consolidated
         /// </summary>
         /// <param name="assets"></param>
-        /// <returns>consolidated asset</returns>
-        public Asset Consolidate(List<Asset> assets)
+        /// <returns></returns>
+        public abstract Asset Consolidate(List<Asset> assets);
+        
+        /// <summary>
+        /// method to check if assets are equal
+        /// </summary>
+        /// <param name="assets"></param>
+        protected void ConsolidateCheck(List<Asset> assets)
         {
             if (assets.Count == 0 || assets==null)
                 throw new ArgumentException("empty asset list");
@@ -51,8 +55,6 @@ namespace CodingChallenge
                     throw new ConsolidationException(
                         $"Assets are different, asset {asset} cannot be consolidated with asset {this}");
             }
-
-            return CustomConsolidate(assets);
         }
 
         /// <summary>
